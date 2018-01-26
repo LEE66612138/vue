@@ -8,20 +8,26 @@
             magin: 0;
             padding: 0;
         }
-        ul{
-            list-style: none;
-        }
 
     </style>
 </head>
 <body>
     <div id="app" :style="appStyle">
+
         <div id="div1" :style="div1Style"><h1>商品</h1></div>
+
             <ul>
-                <li :style="liStyle" v-for="obj in arr" @click="ulClick(obj.value, $event, obj.index, obj.isBuy)">
-                    {{obj.good}}--------------------------------------------{{obj.value}}
-                </li>
+                <ul>
+
+                    <li :style="li1Style" v-for="obj in arr" @click="ulClick(obj.value, $event, obj.index, obj.isBuy)">
+                        {{obj.good}}--------------------------------------------{{obj.value}}<button  @click.stop="deleteClick(obj.index)">删除</button>
+                    </li>
+
+                </ul>
+
+
             </ul>
+
         <h1 v-text="num"></h1>
 
 
@@ -34,6 +40,10 @@
             el: '#app',
             data: {
                 num: 0,
+
+//                containerStyle: {
+//                    listStyle: 'none',
+//                },
 
                 arr: [
                     {
@@ -71,13 +81,14 @@
                 div1Style: {
                     textAlign: 'center',
                 },
-                liStyle: {
+                li1Style: {
                     height: '100px',
                     width: '100%',
                     lineHeight: '100px',
                     background: '#21d5aa',
                     marginBottom: '30px',
                     textAlign: 'center',
+                    listStyle: 'none',
                 }
 
 
@@ -88,21 +99,26 @@
 //                    console.log( (e.target.style.backgroundColor))
 //                    console.log(this.liStyle.background)
 //                    console.log(this.color)
-                    if(b == 0) {
+                    if (b == 0) {
                         this.num += n;
                         e.target.style.background = '#ffff32';
                         this.arr[i].isBuy += 1;
 //                        liStyle=  '#ffff32';
 
-                    }else{
+                    } else {
                         this.num -= n;
                         e.target.style.background = '#21d5aa';
                         this.arr[i].isBuy -= 1;
                     }
                 },
-            }
+                deleteClick(i){
+                    console.log(this.arr[i])
 
+                },
+            }
         })
+
+
     </script>
 
 </body>
