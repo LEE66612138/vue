@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="div1">
+        <ul>
+            <li v-for="(shape, index) in shapes">{{shape}}:{{index+1}}</li>
+        </ul>
+        <ul>
+            <li v-for="(val, key, index) in obj">
+                <h1>{{val}}</h1>
+                <h1>{{key}}</h1>
+                <h1>{{index}}</h1>
+            </li>
+        </ul>
+        <ul>
+            <li v-for="obj in arrSort">
+                <div v-for="(val,key) in obj">{{key}}:{{val}}</div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="vue.js"></script>
+
+
+    <script>
+        let vm = new Vue({
+            el: '#div1',
+            data: {
+                shapes :['正方形','三角形','圆形','椭圆形'],
+                obj: {
+                    name: 'zhangsan',
+                    age: '20',
+                    company: 'baidu'
+                },
+                arr: [
+                    {
+                        name: 'zhangsan',
+                        age: '20',
+                        company: 'baidu'
+                    },
+                    {
+                        name: 'lisi',
+                        age: '19',
+                        company: 'ali'
+                    },
+                    {
+                        name: 'ww',
+                        age: '24',
+                        company: 'tengxun'
+                    }
+                ]
+
+            },
+            computed: {
+                arrSort() {
+                    return this.arr.sort(function (a, b) {
+                        return a.age - b.age;
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1">
+        <span v-if="isLogin == 0 ?true:false">{{msg}}</span>
+        <span v-else>请登录</span>
+
+        <br>
+
+        <span v-if="keyword == 'asdf'">123456</span>
+        <span v-else-if="keyword == 'qwer'">654321</span>
+        <span v-else>error</span>
+
+        <br>
+
+        <span v-show="isShow">show</span>
+        <span v-show="!isShow">not show</span>
+
+    </div>
+
+    <script src="vue.js"></script>
+
+    <script>
+        let vm = new Vue({
+            el:'#div1',
+            data:{
+                isLogin: 0,
+                msg: '欢迎登录',
+                keyword: 'asdf',
+                isShow: true
+            }
+        });
+
+    </script>
+
+</body>
+</html>
