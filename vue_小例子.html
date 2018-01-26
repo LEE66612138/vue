@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            magin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app" :style="appStyle">
+        <div id="div1" :style="div1Style"><h1>商品</h1></div>
+            <ul>
+                <li :style="liStyle" v-for="obj in arr" @click="ulClick(obj.value, $event, obj.index, obj.isBuy)">
+                    {{obj.good}}--------------------------------------------{{obj.value}}
+                </li>
+            </ul>
+        <h1 v-text="num"></h1>
+
+
+
+</div>
+    <script src="vue.js"></script>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                num: 0,
+
+                arr: [
+                    {
+                        good: '衣服',
+                        value: 180,
+                        index: 0,
+                        isBuy: 0,
+                    },
+                    {
+                        good: '裤子',
+                        value: 160,
+                        index: 1,
+                        isBuy: 0,
+                    },
+                    {
+                        good: '帽子',
+                        value: 100,
+                        index: 2,
+                        isBuy: 0,
+                    },
+                    {
+                        good: '鞋子',
+                        value: 200,
+                        index: 3,
+                        isBuy: 0,
+                    }
+                ],
+
+                appStyle: {
+                    width: '500px',
+                    height: '600px',
+                    margin: 'auto',
+                },
+
+                div1Style: {
+                    textAlign: 'center',
+                },
+                liStyle: {
+                    height: '100px',
+                    width: '100%',
+                    lineHeight: '100px',
+                    background: '#21d5aa',
+                    marginBottom: '30px',
+                    textAlign: 'center',
+                }
+
+
+            },
+            methods: {
+                ulClick(n, e, i, b){
+                    console.log(this.arr[i])
+//                    console.log( (e.target.style.backgroundColor))
+//                    console.log(this.liStyle.background)
+//                    console.log(this.color)
+                    if(b == 0) {
+                        this.num += n;
+                        e.target.style.background = '#ffff32';
+                        this.arr[i].isBuy += 1;
+//                        liStyle=  '#ffff32';
+
+                    }else{
+                        this.num -= n;
+                        e.target.style.background = '#21d5aa';
+                        this.arr[i].isBuy -= 1;
+                    }
+                },
+            }
+
+        })
+    </script>
+
+</body>
+</html>
