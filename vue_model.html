@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <form action="">
+            用户名：
+            <input type="text" v-model="username">
+            用户名lazy：
+            <input type="text" v-model.lazy="username">
+            用户名trim：
+            <input type="text" v-model.trim="username">
+            <h4>用户名是{{username}}</h4>
+
+            年龄：
+            <input type="number" v-model.number="age">
+            <h4>年龄是{{age}}</h4>
+
+            性别：
+            <input type="radio" v-model="sex" value="boy">boy
+            <input type="radio" v-model="sex" value="girl">girl
+            <h4>性别是{{sex}}</h4>
+
+            学校：
+            <select name="" id="" v-model="school">
+                <option value="农大">农大</option>
+                <option value="黑大">黑大</option>
+                <option value="师大">师大</option>
+                <option value="林大">林大</option>
+            </select>
+            <h4>学校是{{school}}</h4>
+
+            爱好：
+            <input type="checkbox" v-model="hobbys" value="足球">足球
+            <input type="checkbox" v-model="hobbys" value="篮球">篮球
+            <input type="checkbox" v-model="hobbys" value="排球">排球
+            <h4>爱好是{{hobbys}}</h4>
+
+            自我介绍：
+            <textarea name="" id=""cols="30" row="10" v-model="description"></textarea>
+            <h4>自我介绍{{description}}</h4>
+        </form>
+    </div>
+
+
+    <script src="vue.js"></script>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                age: '',
+                sex: '',
+                school: '林大',
+                hobbys: [],
+                description: '',
+            }
+        })
+    </script>
+
+
+
+</body>
+</html>
