@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: #ff0000;
+        }
+        #div2{
+            width: 200px;
+            height: 200px;
+            background: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click.once="clickHandler(2, $event)">btn</button>
+        <h1 v-text="num"></h1>
+
+        <button v-on="{ mousedown: doThis, mouseup: doThat }">btn</button>
+
+        <div id="div1" @click="clickDiv1">
+            <div id="div2" @click.stop="clickDiv2"></div>
+        </div>
+
+        <a href="http://www.baidu.com" @click.prevent="baiduClick($event)">baidu</a>
+
+        <input type="text" @keyup.enter="keyupHandler($event)">
+    </div>
+
+
+    <script src="vue.js"></script>
+
+    <script>
+        let vm =new Vue({
+            el: '#app',
+            data: {
+                num: 20,
+            },
+            methods:{
+                clickHandler(n, e){
+                    this.num += n;
+                    console.log(e);
+                },
+                doThis(){
+                    console.log('dothis');
+                },
+                doThat(){
+                    console.log('dothat');
+                },
+                clickDiv1(){
+                    console.log('div1');
+                },
+                clickDiv2(){
+                    console.log('div2');
+                },
+                baiduClick(e){
+//                    return false;
+//                    e.prevetDefault();z
+                },
+                keyupHandler(e){
+//                    if(e.keyCode == 13){
+//                        console.log(123456);
+//                    }
+                    console.log(123456);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
