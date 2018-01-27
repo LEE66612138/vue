@@ -19,8 +19,10 @@
             <ul>
                 <ul>
 
-                    <li :style="li1Style" v-for="obj in arr" @click="ulClick(obj.value, $event, obj.index, obj.isBuy)">
-                        {{obj.good}}--------------------------------------------{{obj.value}}<button  @click.stop="deleteClick(obj.index)">删除</button>
+                    <li :style="li1Style" v-for="(obj ,index) in arr" @click="ulClick(obj.value, $event, index, obj.isBuy)">
+                        <input type="checkbox"></input>
+                        {{obj.good}}--------------------------------------------{{obj.value}}
+                        <button  @click.stop="deleteClick(index)" type="button">删除</button>
                     </li>
 
                 </ul>
@@ -49,25 +51,21 @@
                     {
                         good: '衣服',
                         value: 180,
-                        index: 0,
                         isBuy: 0,
                     },
                     {
                         good: '裤子',
                         value: 160,
-                        index: 1,
                         isBuy: 0,
                     },
                     {
                         good: '帽子',
                         value: 100,
-                        index: 2,
                         isBuy: 0,
                     },
                     {
                         good: '鞋子',
                         value: 200,
-                        index: 3,
                         isBuy: 0,
                     }
                 ],
@@ -95,6 +93,7 @@
             },
             methods: {
                 ulClick(n, e, i, b){
+                    console.log(i)
                     console.log(this.arr[i])
 //                    console.log( (e.target.style.backgroundColor))
 //                    console.log(this.liStyle.background)
@@ -112,7 +111,8 @@
                     }
                 },
                 deleteClick(i){
-                    console.log(this.arr[i])
+                    console.log(this.arr[i]);
+                    this.arr.splice(i, 1);
 
                 },
             }
